@@ -60,8 +60,8 @@ export default function Pacientes() {
 
   useEffect(() => { carregar() }, [carregar])
 
-  const handleBusca = (e) => { e.preventDefault(); setPagina(0); setBusca(buscaInput) }
-  const handlePeriodo = (val) => { setPeriodo(p => p === val ? '' : val); setPagina(0) }
+  const handleBusca = (e) => { e.preventDefault(); setPagina(0); setBusca(buscaInput); setPeriodo(''); setDataInicio(''); setDataFim('') }
+  const handlePeriodo = (val) => { setPeriodo(p => p === val ? '' : val); setPagina(0); setBusca(''); setBuscaInput('') }
   const limpar = () => { setBusca(''); setBuscaInput(''); setPeriodo(''); setDataInicio(''); setDataFim(''); setPagina(0) }
 
   const fmt = (d) => { try { return format(new Date(d + 'T12:00:00'), 'dd/MM/yyyy', { locale: ptBR }) } catch { return d } }

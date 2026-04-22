@@ -80,7 +80,7 @@ class PacienteOut(BaseModel):
     id: int
     nome_completo: str
     data_nascimento: date
-    cpf: Optional[str]
+    cpf: Optional[str] = None
     telefone: Optional[str]
     email: Optional[str]
     endereco: Optional[str]
@@ -96,7 +96,7 @@ class PacienteListItem(BaseModel):
     id: int
     nome_completo: str
     data_nascimento: date
-    cpf: Optional[str]
+    cpf: Optional[str] = None
     telefone: Optional[str]
     criado_em: datetime
     total_exames: int = 0

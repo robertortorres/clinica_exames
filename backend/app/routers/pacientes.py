@@ -30,10 +30,14 @@ def listar(
         q = q.filter(models.Paciente.nome_completo.ilike(f"%{busca}%"))
 
     if data_inicio:
-        q = q.filter(func.date(models.Paciente.criado_em) >= data_inicio)
+        q = q.filter(
+            func.date(func.timezone('America/Sao_Paulo', models.Paciente.criado_em)) >= data_inicio
+        )
 
     if data_fim:
-        q = q.filter(func.date(models.Paciente.criado_em) <= data_fim)
+        q = q.filter(
+            func.date(func.timezone('America/Sao_Paulo', models.Paciente.criado_em)) <= data_fim
+        )
 
     q = q.group_by(models.Paciente.id)
     q = q.order_by(models.Paciente.criado_em.desc())
@@ -66,9 +70,13 @@ def total(
     if busca:
         q = q.filter(models.Paciente.nome_completo.ilike(f"%{busca}%"))
     if data_inicio:
-        q = q.filter(func.date(models.Paciente.criado_em) >= data_inicio)
+        q = q.filter(
+            func.date(func.timezone('America/Sao_Paulo', models.Paciente.criado_em)) >= data_inicio
+        )
     if data_fim:
-        q = q.filter(func.date(models.Paciente.criado_em) <= data_fim)
+        q = q.filter(
+            func.date(func.timezone('America/Sao_Paulo', models.Paciente.criado_em)) <= data_fim
+        )
     return {"total": q.scalar()}
 
 

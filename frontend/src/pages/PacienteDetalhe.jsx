@@ -28,6 +28,22 @@ export default function PacienteDetalhe() {
 
   useEffect(() => { carregar() }, [id])
 
+  const abrirArquivo = async (exameId, nomeArquivo) => {
+    try {
+      const token = localStorage.getItem('token')
+      const res = await fetch(`/api/exames/${exameId}/arquivo`, {
+        headers: { Authorization: `Bearer ${token}` }
+      })
+      if (!res.ok) throw new Error('Erro ao baixar arquivo')
+      const blob = await res.blob()
+      const url = URL.createObjectURL(blob)
+      window.open(url, '_blank')
+      setTimeout(() => URL.revokeObjectURL(url), 10000)
+    } catch (err) {
+      alert('Erro ao abrir o arquivo. Tente novamente.')
+    }
+  }
+
   const toggleSelecionar = (exameId) => {
     setSelecionados(sel =>
       sel.includes(exameId) ? sel.filter(s => s !== exameId) : [...sel, exameId]
@@ -75,7 +91,7 @@ export default function PacienteDetalhe() {
 
   const fmt = (d) => { try { return format(new Date(d + 'T12:00:00'), "dd 'de' MMMM 'de' yyyy", { locale: ptBR }) } catch { return d } }
   const fmtShort = (d) => { try { return format(new Date(d + 'T12:00:00'), 'dd/MM/yyyy', { locale: ptBR }) } catch { return d } }
-  const fmtTam = (b) => b < 1024 ? `${b}B` : b < 1024*1024 ? `${(b/1024).toFixed(1)}KB` : `${(b/1024/1024).toFixed(1)}MB`
+  const fmtTam = (b) => { const n = Number(b); if (!n || isNaN(n)) return "—"; return n < 1024 ? `${n}B` : n < 1024*1024 ? `${(n/1024).toFixed(1)}KB` : `${(n/1024/1024).toFixed(1)}MB` }
   const isPDF = (t) => t === 'application/pdf'
 
   if (loading) return <div style={{ padding: 48, textAlign: 'center' }}><div className="spinner" /></div>
@@ -183,10 +199,9 @@ export default function PacienteDetalhe() {
                     {exame.observacoes && <div style={{ fontSize: 12, color: 'var(--text2)', marginTop: 4 }}>📝 {exame.observacoes}</div>}
                   </div>
                   <div style={{ display: 'flex', gap: 8 }} onClick={e => e.stopPropagation()}>
-                    <a href={`/api/exames/${exame.id}/arquivo`} target="_blank" rel="noreferrer"
-                      className="btn btn-secondary btn-sm">
+                    <button className="btn btn-secondary btn-sm" onClick={e => { e.stopPropagation(); abrirArquivo(exame.id, exame.arquivo_nome) }}>
                       <Download size={14} /> Abrir
-                    </a>
+                    </button>
                     {podeExcluir && (
                       <button className="btn btn-danger btn-sm" onClick={() => deletarExame(exame.id)}>
                         <Trash2 size={14} />
