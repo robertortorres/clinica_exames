@@ -1,86 +1,86 @@
-# ðŸ¥ ClÃ­nica â€” Sistema de GestÃ£o de Exames
+# 🏥 Clínica — Sistema de Gestão de Exames
 
-Sistema web para gerenciamento de pacientes e exames mÃ©dicos nÃ£o-DICOM. Desenvolvido com **FastAPI** (backend), **React** (frontend) e **PostgreSQL** (banco de dados), empacotado em **Docker**.
+Sistema web para gerenciamento de pacientes e exames médicos não-DICOM. Desenvolvido com **FastAPI** (backend), **React** (frontend) e **PostgreSQL** (banco de dados), empacotado em **Docker**.
 
 ---
 
-## ðŸ“‹ SumÃ¡rio
+## 📋 Sumário
 
 - [Funcionalidades](#-funcionalidades)
-- [Stack TecnolÃ³gica](#-stack-tecnolÃ³gica)
-- [PrÃ©-requisitos](#-prÃ©-requisitos)
-- [InstalaÃ§Ã£o](#-instalaÃ§Ã£o)
-- [ConfiguraÃ§Ã£o](#-configuraÃ§Ã£o)
+- [Stack Tecnológica](#-stack-tecnológica)
+- [Pré-requisitos](#-pré-requisitos)
+- [Instalação](#-instalação)
+- [Configuração](#-configuração)
 - [Acesso ao Sistema](#-acesso-ao-sistema)
-- [Perfis de UsuÃ¡rio](#-perfis-de-usuÃ¡rio)
+- [Perfis de Usuário](#-perfis-de-usuário)
 - [Estrutura do Projeto](#-estrutura-do-projeto)
 - [Uso](#-uso)
 - [Backup](#-backup)
-- [AtualizaÃ§Ã£o](#-atualizaÃ§Ã£o)
-- [VariÃ¡veis de Ambiente](#-variÃ¡veis-de-ambiente)
+- [Atualização](#-atualização)
+- [Variáveis de Ambiente](#-variáveis-de-ambiente)
 - [API](#-api)
 
 ---
 
-## âœ… Funcionalidades
+## ✅ Funcionalidades
 
 ### Dashboard
 - Total de pacientes e exames cadastrados
 - Contador de exames e pacientes do dia
-- Lista dos Ãºltimos 10 pacientes cadastrados
-- Atalho para cadastro rÃ¡pido de paciente
+- Lista dos últimos 10 pacientes cadastrados
+- Atalho para cadastro rápido de paciente
 
 ### Pacientes
-- Cadastro completo (nome, CPF, nascimento, telefone, email, endereÃ§o, observaÃ§Ãµes)
+- Cadastro completo (nome, CPF, nascimento, telefone, email, endereço, observações)
 - Busca parcial por nome em tempo real
-- Filtros de perÃ­odo: **Hoje**, **Ontem**, **Ãšltimos 7 dias**, **Personalizado**
-- PaginaÃ§Ã£o (10 por pÃ¡gina)
-- Data de cadastro automÃ¡tica
+- Filtros de período: **Hoje**, **Ontem**, **Últimos 7 dias**, **Personalizado**
+- Paginação (10 por página)
+- Data de cadastro automática
 
 ### Exames
-- Upload de arquivos (PDF, JPG, PNG, GIF, WEBP) â€” mÃ¡ximo 5MB por arquivo
-- Drag & drop na Ã¡rea de upload
-- Tipo de exame configurÃ¡vel pelo administrador
-- Data de realizaÃ§Ã£o e observaÃ§Ãµes por exame
-- Download/visualizaÃ§Ã£o do arquivo
-- ExclusÃ£o (apenas admin)
+- Upload de arquivos (PDF, JPG, PNG, GIF, WEBP) — máximo 5MB por arquivo
+- Drag & drop na área de upload
+- Tipo de exame configurável pelo administrador
+- Data de realização e observações por exame
+- Download/visualização do arquivo
+- Exclusão (apenas admin)
 
 ### WhatsApp
 - Selecione um ou mais exames na tela do paciente
-- Clique em **WhatsApp** para abrir mensagem prÃ©-formatada
+- Clique em **WhatsApp** para abrir mensagem pré-formatada
 - Mensagem inclui nome do paciente, tipo, data e link de cada exame
 
-### UsuÃ¡rios
+### Usuários
 - Cadastro com nome, email, senha e perfil
-- AtivaÃ§Ã£o/desativaÃ§Ã£o de acesso
+- Ativação/desativação de acesso
 - Troca de senha
-- AutenticaÃ§Ã£o JWT com expiraÃ§Ã£o de sessÃ£o (60 min)
+- Autenticação JWT com expiração de sessão (60 min)
 
 ---
 
-## ðŸ›  Stack TecnolÃ³gica
+## 🛠 Stack Tecnológica
 
 | Camada | Tecnologia |
 |---|---|
 | Backend | Python 3.11 + FastAPI + SQLAlchemy |
 | Frontend | React 18 + Vite + React Router |
 | Banco de dados | PostgreSQL 15 |
-| AutenticaÃ§Ã£o | JWT (python-jose) + bcrypt (passlib) |
+| Autenticação | JWT (python-jose) + bcrypt (passlib) |
 | Servidor web | Nginx (proxy reverso) |
 | Containers | Docker + Docker Compose |
 
 ---
 
-## ðŸ“¦ PrÃ©-requisitos
+## 📦 Pré-requisitos
 
-- [Docker](https://docs.docker.com/get-docker/) versÃ£o 24+
+- [Docker](https://docs.docker.com/get-docker/) versão 24+
 - [Docker Compose](https://docs.docker.com/compose/) v2+
-- 2 GB de RAM disponÃ­vel
-- Portas **80** disponÃ­vel no servidor
+- 2 GB de RAM disponível
+- Portas **80** disponível no servidor
 
 ---
 
-## ðŸš€ InstalaÃ§Ã£o
+## 🚀 Instalação
 
 ### 1. Copie os arquivos para o servidor
 
@@ -91,14 +91,14 @@ mkdir clinica && cd clinica
 # Copie todos os arquivos do ZIP para esta pasta
 ```
 
-### 2. Configure as variÃ¡veis de ambiente
+### 2. Configure as variáveis de ambiente
 
 ```bash
 cp .env.example .env
 nano .env
 ```
 
-Edite o `.env` com suas senhas (veja a seÃ§Ã£o [VariÃ¡veis de Ambiente](#-variÃ¡veis-de-ambiente)).
+Edite o `.env` com suas senhas (veja a seção [Variáveis de Ambiente](#-variáveis-de-ambiente)).
 
 ### 3. Gere uma chave secreta segura
 
@@ -113,9 +113,9 @@ openssl rand -hex 32
 docker compose up -d --build
 ```
 
-A primeira execuÃ§Ã£o farÃ¡ o build das imagens e pode levar alguns minutos.
+A primeira execução fará o build das imagens e pode levar alguns minutos.
 
-### 5. Verifique se estÃ¡ tudo rodando
+### 5. Verifique se está tudo rodando
 
 ```bash
 docker compose ps
@@ -133,39 +133,39 @@ clinica_nginx       running
 
 ---
 
-## âš™ï¸ ConfiguraÃ§Ã£o
+## ⚙️ Configuração
 
-### Estrutura de pastas necessÃ¡ria
+### Estrutura de pastas necessária
 
 ```
 clinica/
-â”œâ”€â”€ .env                  â† suas senhas (nÃ£o commitar!)
-â”œâ”€â”€ docker-compose.yml
-â”œâ”€â”€ nginx/
-â”‚   â””â”€â”€ nginx.conf
-â”œâ”€â”€ backend/
-â”‚   â”œâ”€â”€ Dockerfile
-â”‚   â”œâ”€â”€ requirements.txt
-â”‚   â””â”€â”€ app/
-â””â”€â”€ frontend/
-    â”œâ”€â”€ Dockerfile
-    â””â”€â”€ src/
+├── .env                  ← suas senhas (não commitar!)
+├── docker-compose.yml
+├── nginx/
+│   └── nginx.conf
+├── backend/
+│   ├── Dockerfile
+│   ├── requirements.txt
+│   └── app/
+└── frontend/
+    ├── Dockerfile
+    └── src/
 ```
 
-### Primeiro acesso â€” usuÃ¡rio admin padrÃ£o
+### Primeiro acesso — usuário admin padrão
 
-Na primeira execuÃ§Ã£o, o sistema cria automaticamente um usuÃ¡rio administrador:
+Na primeira execução, o sistema cria automaticamente um usuário administrador:
 
 | Campo | Valor |
 |---|---|
 | Email | `admin@clinica.local` |
 | Senha | `Admin@123` |
 
-> âš ï¸ **Altere a senha do admin imediatamente apÃ³s o primeiro acesso!**
+> ⚠️ **Altere a senha do admin imediatamente após o primeiro acesso!**
 
 ---
 
-## ðŸŒ Acesso ao Sistema
+## 🌐 Acesso ao Sistema
 
 | Interface | URL |
 |---|---|
@@ -174,116 +174,116 @@ Na primeira execuÃ§Ã£o, o sistema cria automaticamente um usuÃ¡rio adminis
 
 ---
 
-## ðŸ‘¥ Perfis de UsuÃ¡rio
+## 👥 Perfis de Usuário
 
-| Perfil | Dashboard | Ver Pacientes | Cadastrar Paciente | Adicionar Exame | Gerenciar UsuÃ¡rios | Tipos de Exame | Excluir Exame |
+| Perfil | Dashboard | Ver Pacientes | Cadastrar Paciente | Adicionar Exame | Gerenciar Usuários | Tipos de Exame | Excluir Exame |
 |---|:---:|:---:|:---:|:---:|:---:|:---:|:---:|
-| **Admin** | âœ… | âœ… | âœ… | âœ… | âœ… | âœ… | âœ… |
-| **Enfermagem** | âœ… | âœ… | âœ… | âœ… | âŒ | âŒ | âŒ |
-| **Atendimento** | âœ… | âœ… | âŒ | âŒ | âŒ | âŒ | âŒ |
+| **Admin** | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
+| **Enfermagem** | ✅ | ✅ | ✅ | ✅ | ❌ | ❌ | ❌ |
+| **Atendimento** | ✅ | ✅ | ❌ | ❌ | ❌ | ❌ | ❌ |
 
 ---
 
-## ðŸ“ Estrutura do Projeto
+## 📁 Estrutura do Projeto
 
 ```
 clinica/
-â”œâ”€â”€ docker-compose.yml              # OrquestraÃ§Ã£o dos containers
-â”œâ”€â”€ .env.example                    # Modelo de variÃ¡veis de ambiente
-â”‚
-â”œâ”€â”€ nginx/
-â”‚   â””â”€â”€ nginx.conf                  # Proxy reverso (porta 80)
-â”‚
-â”œâ”€â”€ backend/
-â”‚   â”œâ”€â”€ Dockerfile
-â”‚   â”œâ”€â”€ requirements.txt
-â”‚   â””â”€â”€ app/
-â”‚       â”œâ”€â”€ main.py                 # InicializaÃ§Ã£o FastAPI + startup
-â”‚       â”œâ”€â”€ config.py               # ConfiguraÃ§Ãµes via env vars
-â”‚       â”œâ”€â”€ database.py             # ConexÃ£o PostgreSQL (SQLAlchemy)
-â”‚       â”œâ”€â”€ models.py               # Modelos de banco (ORM)
-â”‚       â”œâ”€â”€ schemas.py              # Schemas de validaÃ§Ã£o (Pydantic)
-â”‚       â”œâ”€â”€ routers/
-â”‚       â”‚   â”œâ”€â”€ auth.py             # Login / token JWT
-â”‚       â”‚   â”œâ”€â”€ dashboard.py        # EstatÃ­sticas do dashboard
-â”‚       â”‚   â”œâ”€â”€ pacientes.py        # CRUD de pacientes
-â”‚       â”‚   â”œâ”€â”€ exames.py           # Upload e gestÃ£o de exames
-â”‚       â”‚   â””â”€â”€ usuarios.py         # GestÃ£o de usuÃ¡rios (admin)
-â”‚       â””â”€â”€ utils/
-â”‚           â”œâ”€â”€ auth.py             # JWT, bcrypt, guards de perfil
-â”‚           â””â”€â”€ files.py            # Upload, validaÃ§Ã£o e storage
-â”‚
-â””â”€â”€ frontend/
-    â”œâ”€â”€ Dockerfile
-    â”œâ”€â”€ package.json
-    â”œâ”€â”€ vite.config.js
-    â”œâ”€â”€ index.html
-    â”œâ”€â”€ nginx.conf                  # Nginx interno do container React
-    â””â”€â”€ src/
-        â”œâ”€â”€ App.jsx                 # Rotas principais
-        â”œâ”€â”€ index.css               # Estilos globais
-        â”œâ”€â”€ main.jsx                # Entry point React
-        â”œâ”€â”€ contexts/
-        â”‚   â””â”€â”€ AuthContext.jsx     # Estado global de autenticaÃ§Ã£o
-        â”œâ”€â”€ services/
-        â”‚   â””â”€â”€ api.js              # Axios configurado
-        â”œâ”€â”€ components/
-        â”‚   â”œâ”€â”€ Layout.jsx          # Sidebar + estrutura de pÃ¡gina
-        â”‚   â””â”€â”€ ModalExame.jsx      # Modal de upload de exame
-        â””â”€â”€ pages/
-            â”œâ”€â”€ Login.jsx           # Tela de login
-            â”œâ”€â”€ Dashboard.jsx       # Painel inicial
-            â”œâ”€â”€ Pacientes.jsx       # Listagem com busca e filtros
-            â”œâ”€â”€ PacienteDetalhe.jsx # Detalhe + exames + WhatsApp
-            â”œâ”€â”€ PacienteForm.jsx    # Cadastro / ediÃ§Ã£o
-            â”œâ”€â”€ Usuarios.jsx        # GestÃ£o de usuÃ¡rios (admin)
-            â””â”€â”€ TiposExame.jsx      # Tipos de exame (admin)
+├── docker-compose.yml              # Orquestração dos containers
+├── .env.example                    # Modelo de variáveis de ambiente
+│
+├── nginx/
+│   └── nginx.conf                  # Proxy reverso (porta 80)
+│
+├── backend/
+│   ├── Dockerfile
+│   ├── requirements.txt
+│   └── app/
+│       ├── main.py                 # Inicialização FastAPI + startup
+│       ├── config.py               # Configurações via env vars
+│       ├── database.py             # Conexão PostgreSQL (SQLAlchemy)
+│       ├── models.py               # Modelos de banco (ORM)
+│       ├── schemas.py              # Schemas de validação (Pydantic)
+│       ├── routers/
+│       │   ├── auth.py             # Login / token JWT
+│       │   ├── dashboard.py        # Estatísticas do dashboard
+│       │   ├── pacientes.py        # CRUD de pacientes
+│       │   ├── exames.py           # Upload e gestão de exames
+│       │   └── usuarios.py         # Gestão de usuários (admin)
+│       └── utils/
+│           ├── auth.py             # JWT, bcrypt, guards de perfil
+│           └── files.py            # Upload, validação e storage
+│
+└── frontend/
+    ├── Dockerfile
+    ├── package.json
+    ├── vite.config.js
+    ├── index.html
+    ├── nginx.conf                  # Nginx interno do container React
+    └── src/
+        ├── App.jsx                 # Rotas principais
+        ├── index.css               # Estilos globais
+        ├── main.jsx                # Entry point React
+        ├── contexts/
+        │   └── AuthContext.jsx     # Estado global de autenticação
+        ├── services/
+        │   └── api.js              # Axios configurado
+        ├── components/
+        │   ├── Layout.jsx          # Sidebar + estrutura de página
+        │   └── ModalExame.jsx      # Modal de upload de exame
+        └── pages/
+            ├── Login.jsx           # Tela de login
+            ├── Dashboard.jsx       # Painel inicial
+            ├── Pacientes.jsx       # Listagem com busca e filtros
+            ├── PacienteDetalhe.jsx # Detalhe + exames + WhatsApp
+            ├── PacienteForm.jsx    # Cadastro / edição
+            ├── Usuarios.jsx        # Gestão de usuários (admin)
+            └── TiposExame.jsx      # Tipos de exame (admin)
 ```
 
 ---
 
-## ðŸ“– Uso
+## 📖 Uso
 
-### Cadastrar tipo de exame (necessÃ¡rio antes de adicionar exames)
+### Cadastrar tipo de exame (necessário antes de adicionar exames)
 
-1. FaÃ§a login como **admin**
-2. Menu lateral â†’ **Tipos de Exame**
+1. Faça login como **admin**
+2. Menu lateral → **Tipos de Exame**
 3. Clique em **Novo Tipo** e preencha o nome (ex: Hemograma, Raio-X, Ultrassom)
 
 ### Cadastrar paciente
 
-1. Menu lateral â†’ **Novo Paciente** (ou botÃ£o no Dashboard)
-2. Preencha nome completo e data de nascimento (obrigatÃ³rios)
-3. CPF, telefone, email, endereÃ§o e observaÃ§Ãµes sÃ£o opcionais
+1. Menu lateral → **Novo Paciente** (ou botão no Dashboard)
+2. Preencha nome completo e data de nascimento (obrigatórios)
+3. CPF, telefone, email, endereço e observações são opcionais
 4. Clique em **Cadastrar Paciente**
 
 ### Adicionar exame ao paciente
 
 1. Abra o cadastro do paciente
 2. Clique em **Adicionar Exame**
-3. Selecione o tipo, informe a data de realizaÃ§Ã£o
-4. Arraste ou clique para selecionar o arquivo (PDF ou imagem, mÃ¡x. 5MB)
+3. Selecione o tipo, informe a data de realização
+4. Arraste ou clique para selecionar o arquivo (PDF ou imagem, máx. 5MB)
 5. Clique em **Salvar Exame**
 
 ### Enviar exame por WhatsApp
 
-1. Na tela do paciente, **clique nos exames** para selecionÃ¡-los (checkbox)
-2. O botÃ£o verde **WhatsApp** aparecerÃ¡ no topo da lista
-3. Clique nele â€” o WhatsApp Web abrirÃ¡ com a mensagem e links jÃ¡ preenchidos
+1. Na tela do paciente, **clique nos exames** para selecioná-los (checkbox)
+2. O botão verde **WhatsApp** aparecerá no topo da lista
+3. Clique nele — o WhatsApp Web abrirá com a mensagem e links já preenchidos
 
-> O paciente precisa ter **telefone cadastrado** para o botÃ£o funcionar.
+> O paciente precisa ter **telefone cadastrado** para o botão funcionar.
 
-### Filtrar pacientes por perÃ­odo
+### Filtrar pacientes por período
 
-Na tela de **Pacientes**, use os botÃµes de perÃ­odo:
-- **Hoje** â€” pacientes cadastrados hoje
-- **Ontem** â€” pacientes cadastrados ontem
-- **Ãšltimos 7 dias** â€” da semana atual
-- **Personalizado** â€” escolha datas inÃ­cio e fim
+Na tela de **Pacientes**, use os botões de período:
+- **Hoje** — pacientes cadastrados hoje
+- **Ontem** — pacientes cadastrados ontem
+- **Últimos 7 dias** — da semana atual
+- **Personalizado** — escolha datas início e fim
 
 ---
 
-## ðŸ’¾ Backup
+## 💾 Backup
 
 ### Banco de dados
 
@@ -314,7 +314,7 @@ docker compose exec -T db psql \
 
 ---
 
-## ðŸ”„ AtualizaÃ§Ã£o
+## 🔄 Atualização
 
 ```bash
 # 1. Baixar novas imagens
@@ -329,7 +329,7 @@ docker compose logs -f backend
 
 ---
 
-## ðŸ”§ VariÃ¡veis de Ambiente
+## 🔧 Variáveis de Ambiente
 
 Crie o arquivo `.env` a partir do `.env.example`:
 
@@ -339,27 +339,27 @@ DB_NAME=clinica
 DB_USER=clinica
 DB_PASSWORD=SUA_SENHA_FORTE_AQUI
 
-# Chave secreta para JWT â€” gere com: openssl rand -hex 32
+# Chave secreta para JWT — gere com: openssl rand -hex 32
 SECRET_KEY=SUA_CHAVE_SECRETA_LONGA_E_ALEATORIA
 ```
 
 ---
 
-## ðŸ“¡ API
+## 📡 API
 
-A documentaÃ§Ã£o interativa da API estÃ¡ disponÃ­vel em:
+A documentação interativa da API está disponível em:
 
 ```
-http://SEU-IP/api/docs       â† Swagger UI
-http://SEU-IP/api/redoc      â† ReDoc
+http://SEU-IP/api/docs       ← Swagger UI
+http://SEU-IP/api/redoc      ← ReDoc
 ```
 
 ### Principais endpoints
 
-| MÃ©todo | Endpoint | DescriÃ§Ã£o | Perfil mÃ­nimo |
+| Método | Endpoint | Descrição | Perfil mínimo |
 |---|---|---|---|
-| POST | `/api/auth/login` | Login e geraÃ§Ã£o de token | PÃºblico |
-| GET | `/api/dashboard` | EstatÃ­sticas gerais | Todos |
+| POST | `/api/auth/login` | Login e geração de token | Público |
+| GET | `/api/dashboard` | Estatísticas gerais | Todos |
 | GET | `/api/pacientes` | Listar pacientes (com busca/filtro) | Todos |
 | POST | `/api/pacientes` | Cadastrar paciente | Enfermagem+ |
 | GET | `/api/pacientes/{id}` | Detalhe do paciente + exames | Todos |
@@ -369,29 +369,29 @@ http://SEU-IP/api/redoc      â† ReDoc
 | DELETE | `/api/exames/{id}` | Excluir exame | Admin |
 | GET | `/api/tipos-exame` | Listar tipos de exame | Todos |
 | POST | `/api/tipos-exame` | Criar tipo de exame | Admin |
-| GET | `/api/usuarios` | Listar usuÃ¡rios | Admin |
-| POST | `/api/usuarios` | Criar usuÃ¡rio | Admin |
-| PUT | `/api/usuarios/{id}` | Editar usuÃ¡rio | Admin |
+| GET | `/api/usuarios` | Listar usuários | Admin |
+| POST | `/api/usuarios` | Criar usuário | Admin |
+| PUT | `/api/usuarios/{id}` | Editar usuário | Admin |
 
 ---
 
-## ðŸ›¡ï¸ SeguranÃ§a
+## 🛡️ Segurança
 
 - Senhas armazenadas com **bcrypt** (nunca em texto puro)
-- AutenticaÃ§Ã£o via **JWT** com expiraÃ§Ã£o de 60 minutos
-- Guards de perfil em todas as rotas sensÃ­veis
-- ValidaÃ§Ã£o de tipo e tamanho de arquivo no upload
-- VariÃ¡veis sensÃ­veis isoladas no `.env` (nunca commitar)
+- Autenticação via **JWT** com expiração de 60 minutos
+- Guards de perfil em todas as rotas sensíveis
+- Validação de tipo e tamanho de arquivo no upload
+- Variáveis sensíveis isoladas no `.env` (nunca commitar)
 
 ---
 
-## ðŸ› Logs e DiagnÃ³stico
+## 🐛 Logs e Diagnóstico
 
 ```bash
 # Ver todos os logs ao vivo
 docker compose logs -f
 
-# Logs por serviÃ§o
+# Logs por serviço
 docker compose logs -f backend
 docker compose logs -f frontend
 docker compose logs -f db
@@ -400,19 +400,19 @@ docker compose logs -f nginx
 # Status dos containers
 docker compose ps
 
-# Reiniciar um serviÃ§o especÃ­fico
+# Reiniciar um serviço específico
 docker compose restart backend
 ```
 
 ---
 
-## ðŸ“ž Suporte
+## 📞 Suporte
 
-Para dÃºvidas ou problemas, verifique:
+Para dúvidas ou problemas, verifique:
 1. Os logs com `docker compose logs -f backend`
-2. Se todos os containers estÃ£o `running` com `docker compose ps`
-3. Se o arquivo `.env` estÃ¡ preenchido corretamente
+2. Se todos os containers estão `running` com `docker compose ps`
+3. Se o arquivo `.env` está preenchido corretamente
 
 ---
 
-*Sistema desenvolvido para uso clÃ­nico interno. Para ambientes de produÃ§Ã£o, recomenda-se configurar HTTPS com certificado SSL.*
+*Sistema desenvolvido para uso clínico interno. Para ambientes de produção, recomenda-se configurar HTTPS com certificado SSL.*
